@@ -5,6 +5,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TagLib;
+using TagLib.Id3v2;
 
 namespace ExplicitMarker
 {
@@ -35,8 +37,21 @@ namespace ExplicitMarker
                     var s = TagLib.File.Create(fn.FullName);
                     var artist = s.GetTag(TagLib.TagTypes.Id3v2).FirstPerformer;
                     var title = s.GetTag(TagLib.TagTypes.Id3v2).Title;
-                    Console.WriteLine("Converted: {0} - {1}", artist, title);
-                    Console.WriteLine("Marked as explicit: {0} - {1}", artist, title);
+                    var outputFile = Path.Combine(destination.FullName, fn.Name.Replace(".mp3", ".aac"));
+                    try
+                    {
+
+                        ConvertToAAC(fn.FullName, outputFile);
+                        Console.WriteLine("Converted: {0} - {1}", artist, title);
+                        SetExplicit(outputFile);
+                        Console.WriteLine("Marked as explicit: {0} - {1}", artist, title);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error: {0}", ex.Message);
+                    }
+                    Console.WriteLine("Only one file per folder in the demo, sorry.");
+                    break;
                 }
                 Console.ReadLine();
             }
@@ -47,21 +62,19 @@ namespace ExplicitMarker
             }
         }
 
-        static byte[] ConvertToAAC(string input, string output)
+        static void ConvertToAAC(string input, string output)
         {
-            using (var reader = new Mp3FileReader(input))
-            {
-                using (WaveFileWriter writer = new WaveFileWriter(wavFile, reader.WaveFormat))
-                {
-                    byte[] buffer = new byte[4096];
-                    int bytesRead = 0;
-                    do
-                    {
-                        bytesRead = reader.Read(buffer, 0, buffer.Length);
-                        writer.Write(buffer, 0, bytesRead);
-                    } while (bytesRead > 0);
-                }
-            }
+            using (var reader = new MediaFoundationReader(input))
+                MediaFoundationEncoder.EncodeToAac(reader, output);
+        }
+
+        static void SetExplicit(string file)
+        {
+            var f = TagLib.File.Create(file);
+            var t = (TagLib.Id3v2.Tag)f.GetTag(TagTypes.Id3v2);
+            var p = PrivateFrame.Get(t, "ITUNESADVISORY", true);
+            p.PrivateData = System.Text.Encoding.Unicode.GetBytes("1");
+            f.Save();
         }
     }
 }
