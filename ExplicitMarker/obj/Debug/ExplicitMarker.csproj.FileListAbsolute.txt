@@ -1,0 +1,11 @@
+C:\Users\mrrey\OneDrive\Documents\Visual Studio 2015\Projects\ExplicitMarker\ExplicitMarker\bin\Debug\ExplicitMarker.exe.config
+C:\Users\mrrey\OneDrive\Documents\Visual Studio 2015\Projects\ExplicitMarker\ExplicitMarker\bin\Debug\ExplicitMarker.exe
+C:\Users\mrrey\OneDrive\Documents\Visual Studio 2015\Projects\ExplicitMarker\ExplicitMarker\bin\Debug\ExplicitMarker.pdb
+C:\Users\mrrey\OneDrive\Documents\Visual Studio 2015\Projects\ExplicitMarker\ExplicitMarker\obj\Debug\ExplicitMarker.csprojResolveAssemblyReference.cache
+C:\Users\mrrey\OneDrive\Documents\Visual Studio 2015\Projects\ExplicitMarker\ExplicitMarker\obj\Debug\ExplicitMarker.exe
+C:\Users\mrrey\OneDrive\Documents\Visual Studio 2015\Projects\ExplicitMarker\ExplicitMarker\obj\Debug\ExplicitMarker.pdb
+C:\Users\mrrey\OneDrive\Documents\Visual Studio 2015\Projects\ExplicitMarker\ExplicitMarker\bin\Debug\NAudio.dll
+C:\Users\mrrey\OneDrive\Documents\Visual Studio 2015\Projects\ExplicitMarker\ExplicitMarker\bin\Debug\policy.2.0.taglib-sharp.dll
+C:\Users\mrrey\OneDrive\Documents\Visual Studio 2015\Projects\ExplicitMarker\ExplicitMarker\bin\Debug\taglib-sharp.dll
+C:\Users\mrrey\OneDrive\Documents\Visual Studio 2015\Projects\ExplicitMarker\ExplicitMarker\bin\Debug\NAudio.xml
+C:\Users\mrrey\OneDrive\Documents\Visual Studio 2015\Projects\ExplicitMarker\ExplicitMarker\bin\Debug\policy.2.0.taglib-sharp.config
